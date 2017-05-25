@@ -64,21 +64,24 @@ bingoApp.controller('siteCtrl', function ($scope, $http, $interval) {
 });
 
 
+
 bingoApp.controller("logSwitchCtrl", function ($scope, $http) {
-    $("#myButton").on("click", function () {
-        click()
+    $("#logSwitchButton").on("click", function () {
+        console.log("hahaha")
+        logSwitch()
     })
 
-    function click() {
+    function logSwitch() {
         $http({
             method: 'PUT',
             url: 'http://123.206.209.23:8080/smallYello/yinmeizi/hostStation.do',
-            params: $('#myForm').serialize()
-        }).then(
-            function (response) {
-                console.log(response.data.resMsg)
-            }
-        )
+            params: $('#logSwitchForm').serialize()
+        }).then(function successCallback(response) {
+            $scope.datas = response.data.result;
+        }, function errorCallback(response) {
+            // 请求失败执行代码
+            console.log("haha")
+        })
     }
 });
 
@@ -99,8 +102,6 @@ bingoApp.controller("logTraceCtrl", function ($scope, $http) {
             url: 'http://123.206.209.23:8080/smallYello/yinmeizi/hostStation.do'
         }).then(function successCallback(response) {
             $scope.datas = response.data.result;
-            $scope.resMsgval = response.data.resMsg;
-            $scope.resCode1 = response.data.resCode;
         }, function errorCallback(response) {
             // 请求失败执行代码
         });
