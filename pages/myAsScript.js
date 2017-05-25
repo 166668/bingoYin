@@ -34,10 +34,10 @@ bingoApp.controller('mainController', function ($scope) {
     $scope.message = 'Everyone come and see how good I look!';
 });
 
-bingoApp.controller('siteCtrl', function ($scope, $http, $interval) {
+bingoApp.controller('nodeListCtrl', function ($scope, $http) {
     http();
 
-    $("#myButton").on("click", function () {
+    $("#nodeListRefreshButton").off("click").on("click", function () {
         http()
     })
 
@@ -66,7 +66,7 @@ bingoApp.controller('siteCtrl', function ($scope, $http, $interval) {
 
 
 bingoApp.controller("logSwitchCtrl", function ($scope, $http) {
-    $("#logSwitchButton").on("click", function () {
+   $("#logSwitchButton").off("click").on("click",function () {
         console.log("hahaha")
         logSwitch()
     })
